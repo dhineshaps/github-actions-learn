@@ -1,4 +1,4 @@
-name: Python Test Workflow
+name: Python Flask Test Workflow
 on: workflow_dispatch
 jobs:
   Python-Test-job:
