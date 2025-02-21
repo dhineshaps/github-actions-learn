@@ -26,4 +26,4 @@ jobs:
 
       # Step 5: Run tests
      - name: Run Tests
-       run: python test.py  # Execute the test script
+       run: python Python/test.py  # Execute the test script
