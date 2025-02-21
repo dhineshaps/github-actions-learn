@@ -1,0 +1,10 @@
+name: Python Test Workflow
+on: workflow_dispatch
+jobs:
+  Python-Test-job:
+   runs-on: ubuntu-latest
+   steps:
+     - name: checkout-code
+       uses: actions/checkout@v3
+     - name: Run Python 
+       run: python test.py
