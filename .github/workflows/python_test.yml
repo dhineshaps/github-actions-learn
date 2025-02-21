@@ -17,4 +17,4 @@ jobs:
        run: python -m pip install --upgrade pip requests # Install the dependencies (if needed)
 
      - name: Execute Python script # Run the script.py file to get the latest data
-       run: python test.py
+       run: python Python/test.py
