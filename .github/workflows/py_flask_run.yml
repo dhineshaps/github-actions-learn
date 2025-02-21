@@ -15,5 +15,15 @@ jobs:
        run: |
            python -m pip install --upgrade pip requests # Install the dependencies (if needed)
            pip install -r Python/requirements.txt
-     - name: Execute Python script # Run the script.py file to get the latest data
-       run: python Python/py_flask.py
+     # - name: Execute Python script # Run the script.py file to get the latest data
+     #   run: python Python/py_flask.py
+      # Step 4: Perform code linting with flake8
+     - name: Run Code Linting
+       run: |
+          pip install flake8  # Install flake8 for linting
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics  # Catch severe issues
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check for style issues
+
+      # Step 5: Run tests
+     - name: Run Tests
+       run: python test.py  # Execute the test script
