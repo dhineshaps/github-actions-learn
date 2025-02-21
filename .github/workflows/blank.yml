@@ -10,4 +10,6 @@ jobs:
           echo "he fetquest"
      - name: Print goodbye
        run: echo "goodbye workflow"
+     - name: Test Python
+       run: python --version
      
