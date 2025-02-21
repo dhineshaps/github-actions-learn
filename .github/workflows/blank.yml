@@ -5,7 +5,9 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: Print greeting
-       run: echo "hello test workflow"
+       run: 
+          echo "hello test workflow"
+          echo "he fetquest"
      - name: Print goodbye
        run: echo "goodbye workflow"
      
