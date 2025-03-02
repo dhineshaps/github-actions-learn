@@ -28,6 +28,7 @@ jobs:
      # - name: Run Tests
      #   run: python Python/test.py  # Execute the test script
   deploy:
+    needs: Python-Test-job
     runs-on: ubuntu-latest
     steps:
      - name: checkout-code
