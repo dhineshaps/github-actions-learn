@@ -2,7 +2,18 @@ name: Python Deployment Workflow
 on: 
    pull_request:
     types: [closed, edited]
+    branches:
+     - main
+     - 'dev-*' # will only accept dev-test
+     - 'feat*/**'  #will use feat/new or feat/new/verynew
    workflow_dispatch:
+   push:
+     branches:
+        - main
+        - 'dev-*' # will only accept dev-test
+        - 'feat*/**'  #will use feat/new or feat/new/verynew
+     paths-ignore:
+        - '.github/workflows/*'
 jobs:
   Python-Test-job:
    runs-on: ubuntu-latest
