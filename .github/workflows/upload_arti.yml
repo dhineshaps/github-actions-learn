@@ -39,7 +39,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check for style issues
       #to upload artifact
      - name: Upload artifacts
-       uses: actions/upload-artifact@v3
+       uses: actions/upload-artifact@v4
        with:
          name: test-files
          path: |
