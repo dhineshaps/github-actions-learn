@@ -67,5 +67,14 @@ jobs:
            pip install -r Python/requirements.txt
      - name: Run Tests
        run: python Python/test.py
+           #to download artifact
+     - name: download artifacts
+       uses: actions/download-artifact@v4
+       with:
+         name: test-files
+     - name: list artifacts contents
+       run: ls
      - name: Deploy
        run: echo "deployed"
+
+       
