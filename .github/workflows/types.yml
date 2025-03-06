@@ -1,4 +1,4 @@
-name: Python Deployment Workflow
+name: Python types Workflow
 on: 
    pull_request:
     types: [closed, edited]
