@@ -1,0 +1,83 @@
+name: Job Output
+on: 
+   pull_request:
+    types: [closed, edited]
+    branches:
+     - main
+     - 'dev-*' # will only accept dev-test
+     - 'feat*/**'  #will use feat/new or feat/new/verynew
+   workflow_dispatch:
+   push:
+     branches:
+        - main
+        - 'dev-*' # will only accept dev-test
+        - 'feat*/**'  #will use feat/new or feat/new/verynew
+     paths-ignore:
+        - '.github/workflows/*'
+jobs:
+  Python-Test-job:
+   runs-on: ubuntu-latest
+   outputs:
+      script-file:${{ steps.publish.outputs.script-file }}
+   steps:
+     - name: checkout-code
+       uses: actions/checkout@v3
+     - name: Setup Python Version
+       uses: actions/setup-python@v3
+       with:
+          python-version: 3.9 # Install the python version needed
+     - name: Publish Python filename
+       id: publish
+       run: Python/*.yml -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+
+     - name: Install Python dependencies
+       run: |
+           python -m pip install --upgrade pip requests # Install the dependencies (if needed)
+           pip install -r Python/requirements.txt
+     # - name: Execute Python script # Run the script.py file to get the latest data
+     #   run: python Python/py_flask.py
+      # Step 4: Perform code linting with flake8
+     - name: Run Code Linting
+       run: |
+          pip install flake8  # Install flake8 for linting
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics  # Catch severe issues
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check for style issues
+      #to upload artifact
+     - name: Upload artifacts
+       uses: actions/upload-artifact@v4
+       with:
+         name: test-files
+         path: |
+            Python 
+      # to ignore some file  use !
+            
+
+     #  # Step 5: Run tests
+     # - name: Run Tests
+     #   run: python Python/test.py  # Execute the test script
+  deploy:
+    needs: Python-Test-job
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout-code
+       uses: actions/checkout@v3
+     - name: Setup Python Version
+       uses: actions/setup-python@v3
+       with:
+          python-version: 3.9 # Install the python version needed
+    
+     - name: Install Python dependencies
+       run: |
+           python -m pip install --upgrade pip requests # Install the dependencies (if needed)
+           pip install -r Python/requirements.txt
+     - name: Run Tests
+       run: python Python/test.py
+           #to download artifact
+     - name: download artifacts
+       uses: actions/download-artifact@v4
+       with:
+         name: test-files
+     - name: list artifacts contents
+       run: ls
+     - name: Deploy
+       run: echo "deployed"
