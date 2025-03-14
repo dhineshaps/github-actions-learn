@@ -1,4 +1,4 @@
-name: if_cond
+name: if cond valid
 on: 
    pull_request:
     types: [closed, edited]
