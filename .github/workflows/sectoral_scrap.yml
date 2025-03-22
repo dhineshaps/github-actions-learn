@@ -30,6 +30,8 @@ jobs:
        
      - name: checkout-code for push
        run: |
+          pwd 
+          ls
           git config --global user.name 'Dhinesh Palanisamy'
           git config --global user.email 'dhineshpazanisamy@gmail.com'
           git commit -am "scrap file"
