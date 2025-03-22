@@ -27,3 +27,10 @@ jobs:
       # Step 5: Run tests
      - name: Run Tests
        run: python Python/url_scrap_sector.py  # Execute the test script
+       
+     - name: checkout-code for push
+       run: |
+          git config --global user.name 'Dhinesh Palanisamy'
+          git config --global user.email 'dhineshpazanisamy@gmail.com'
+          git commit -am "scrap file"
+          git push
