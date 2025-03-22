@@ -33,6 +33,7 @@ jobs:
           git config --global user.name 'Dhinesh Palanisamy'
           git config --global user.email 'dhineshpazanisamy@gmail.com'
           git pull
+          git status
           git add .
           git commit -m "scrap file"
           git push
