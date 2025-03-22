@@ -32,6 +32,7 @@ jobs:
        run: |
           pwd 
           ls
+          cat url_links_sector.txt
           git config --global user.name 'Dhinesh Palanisamy'
           git config --global user.email 'dhineshpazanisamy@gmail.com'
           git commit -am "scrap file"
