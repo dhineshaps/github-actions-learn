@@ -40,3 +40,5 @@ if table:
                 fil.write(full_url+"\n")  
     else:
         print("No tbody found in the table")
+fil.write("end")
+fil.close()
