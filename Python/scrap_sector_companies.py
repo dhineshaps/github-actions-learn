@@ -32,8 +32,13 @@ def scrap(sector,urls,df):
                 columns = row.find_all('td')
                 if(columns!= []):
                     sec_val = columns[0].text.strip()
+                    sec_val_handle = sec_val.split(" ")[-1]
+                    if(sec_val_handle == "LTD."):
+                        new_sec_val = sec_val.replace(sec_val_handle,"LTD")
+                        values.append(new_sec_val)
+                    else:
                     #print(sec_val)
-                    values.append(sec_val)
+                        values.append(sec_val)
             max_rows = max(len(df), len(values))
             df = df.reindex(range(max_rows)) 
 
