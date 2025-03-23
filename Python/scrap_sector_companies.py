@@ -33,8 +33,8 @@ def scrap(sector,urls,df):
                 if(columns!= []):
                     sec_val = columns[0].text.strip()
                     sec_val_handle = sec_val.split(" ")[-1]
-                    if(sec_val_handle == "LTD."):
-                        new_sec_val = sec_val.replace(sec_val_handle,"LTD")
+                    if(sec_val_handle == "Ltd."):
+                        new_sec_val = sec_val.replace(sec_val_handle,"Ltd")
                         values.append(new_sec_val)
                     else:
                     #print(sec_val)
