@@ -34,12 +34,20 @@ jobs:
       - name: Run mf data
         run: python mf_df.py
 
-      - name: checkout-code for push
+      - name: Commit and Push changes
         run: |
           git config --global user.name 'Dhinesh Palanisamy'
           git config --global user.email 'dhineshpazanisamy@gmail.com'
+          
           git pull
           git status
-          git add .
-          git commit -m "scrap file"
-          git push
+
+          # Check if there are any changes
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Changes detected. Committing..."
+            git add .
+            git commit -m "Stocks and MF data"
+            git push
+          else
+            echo "No changes to commit."
+          fi
