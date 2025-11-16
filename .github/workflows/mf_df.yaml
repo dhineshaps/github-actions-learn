@@ -3,7 +3,7 @@ name: stock_mf_df
 on: workflow_dispatch
 
 jobs:
-  Python-Test-job:
+  Python-stock-mf-df-job:
     runs-on: ubuntu-latest
 
     steps:
