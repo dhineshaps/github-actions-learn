@@ -1,4 +1,4 @@
-name: Sectoral Scrap
+name: mf_df
 on: workflow_dispatch
 jobs:
   Python-Test-job:
